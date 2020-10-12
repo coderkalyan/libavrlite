@@ -30,3 +30,18 @@ uint8_t gpio_get(uint8_t port, uint8_t pin)
 {
     return (GPIO_PIN(port) & (1 << pin)) ? GPIO_HIGH : GPIO_LOW;
 }
+
+void gpio_exint_enable(uint8_t interrupt)
+{
+    EIMSKR |= (1 << interrupt);
+}
+
+void gpio_exint_disable(uint8_t interrupt)
+{
+    EIMSKR &= ~(1 << interrupt);
+}
+
+void gpio_exint_set_mode(uint8_t interrupt, uint8_t mode)
+{
+    EICR |= (mode << GPIO_INTCB(interrupt));
+}
