@@ -20,3 +20,9 @@ libavrlite has many abstractions and utilities embedded programmers will find us
     - EXINT
     - PCINT
 - Hardware analog-digital converter
+
+## Examples & Docs
+
+For the examples, go to the [examples/ folder](examples/).
+The project currently does not have documentation. Contribute some!
+In the meantime, you can [read the header files](include/).
