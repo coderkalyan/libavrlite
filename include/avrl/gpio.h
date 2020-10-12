@@ -1,6 +1,6 @@
 #include <avr/io.h>
 
-#if defined(__AVR_ATmega328p__)
+#if defined(__AVR_ATmega328P__)
 #include <avrl/boards/atmega328p/gpio.h>
 #elif defined(__AVR_ATtiny84__)
 #include <avrl/boards/attiny84/gpio.h>
