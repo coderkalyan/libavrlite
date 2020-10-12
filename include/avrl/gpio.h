@@ -1,12 +1,10 @@
 #include <avr/io.h>
 
-#define GPIO_PORT_B_BASE 0x03
-#define GPIO_PORT_C_BASE 0x06
-#define GPIO_PORT_D_BASE 0x09
-
-#define GPIOB GPIO_PORT_B_BASE
-#define GPIOC GPIO_PORT_C_BASE
-#define GPIOD GPIO_PORT_D_BASE
+#if defined(__AVR_ATmega328p__)
+#include <avrl/boards/atmega328p/gpio.h>
+#elif defined(__AVR_ATtiny84__)
+#include <avrl/boards/attiny84/gpio.h>
+#endif
 
 #define GPIO0 0
 #define GPIO1 1
