@@ -43,5 +43,25 @@ void gpio_exint_disable(uint8_t interrupt)
 
 void gpio_exint_set_mode(uint8_t interrupt, uint8_t mode)
 {
-    EICR |= (mode << GPIO_INTCB(interrupt));
+    EICR |= (mode << GPIO_EXINTCB(interrupt));
+}
+
+void gpio_pcint_enable_port(uint8_t port)
+{
+    PCCR |= (1 << port);
+}
+
+void gpio_pcint_disable_port(uint8_t port)
+{
+    PCCR |= (1 << port);
+}
+
+void gpio_pcint_enable_pin(uint8_t port, uint8_t pin)
+{
+    GPIO_PCMSKR(port) |= (1 << pin);
+}
+
+void gpio_pcint_disable_pin(uint8_t port, uint8_t pin)
+{
+    GPIO_PCMSKR(port) &= ~(1 << pin);
 }

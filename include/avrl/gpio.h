@@ -43,3 +43,7 @@ uint8_t gpio_get(uint8_t port, uint8_t pin);
 void gpio_exint_enable(uint8_t interrupt);
 void gpio_exint_disable(uint8_t interrupt);
 void gpio_exint_set_mode(uint8_t interrupt, uint8_t mode);
+void gpio_pcint_enable_port(uint8_t port);
+void gpio_pcint_disable_port(uint8_t port);
+void gpio_pcint_enable_pin(uint8_t port, uint8_t pin);
+void gpio_pcint_disable_pin(uint8_t port, uint8_t pin);
