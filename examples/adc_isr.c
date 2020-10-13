@@ -1,6 +1,10 @@
 #include <util/delay.h>
+#include <avr/interrupt.h>
 #include <avrl/adc.h>
 #include <avrl/usart.h>
+
+uint16_t data;
+char buffer[5];
 
 int main(void)
 {
@@ -14,14 +18,19 @@ int main(void)
     adc_enable();
     adc_set_clock(125000);
     adc_set_ref(ADC_REFERENCE_AVCC);
+    adc_int_enable();
 
-    uint16_t data;
-    char buffer[5];
+    sei();
+
     while (1) {
-        data = adc_read_blocking(0);
-        sprintf(buffer, "%d", data);
-        usart_putln(USART0, buffer);
-
+        adc_start_conversion(0);
         _delay_ms(500);
     }
+}
+
+ISR(ISR_ADC)
+{
+    data = adc_read();
+    sprintf(buffer, "%d", data);
+    usart_putln(USART0, buffer);
 }

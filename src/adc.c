@@ -32,12 +32,35 @@ void adc_set_adjust(uint8_t adjust)
     ADC_ADJR |= (adjust << ADC_ADJ_BIT);
 }
 
-uint16_t adc_read(int pin)
+void adc_start_conversion(uint8_t pin)
 {
     ADC_MUXR |= (pin << ADC_MUX_BIT);
     ADC_SCR |= (1 << ADC_SCR_BIT);
+}
 
+void adc_wait_ready()
+{
     while (ADC_SCR & (1 << ADC_SCR_BIT));
+}
 
+uint16_t adc_read()
+{
     return (ADC);
+}
+
+uint16_t adc_read_blocking(uint8_t pin)
+{
+    adc_start_conversion(pin);
+    adc_wait_ready();
+    return adc_read();
+}
+
+void adc_int_enable()
+{
+    ADC_INTR |= (1 << ADC_INTR_BIT);
+}
+
+void adc_int_disable()
+{
+    ADC_INTR &= ~(1 << ADC_INTR_BIT);
 }

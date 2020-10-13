@@ -19,6 +19,8 @@
 #define ADC_ADJ_BIT ADLAR
 #define ADC_SCR ADCSRA // adc start conversion register
 #define ADC_SCR_BIT ADSC
+#define ADC_INTR ADCSRA
+#define ADC_INTR_BIT ADIE
 
 #define ADC_REFERENCE_AREF 0
 #define ADC_REFERENCE_AVCC 1
@@ -27,9 +29,16 @@
 #define ADC_ADJUST_RIGHT 0
 #define ADC_ADJUST_LEFT 1
 
+#define ISR_ADC ADC_vect
+
 void adc_enable();
 void adc_disable();
 void adc_set_clock(uint32_t rate);
 void adc_set_ref(uint8_t ref);
 void adc_set_adjust(uint8_t adjust);
-uint16_t adc_read(int pin);
+void adc_start_conversion(uint8_t pin);
+uint16_t adc_read();
+void adc_wait_ready();
+uint16_t adc_read_blocking(uint8_t pin);
+void adc_int_enable();
+void adc_int_disable();
