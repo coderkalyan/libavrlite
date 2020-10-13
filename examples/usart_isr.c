@@ -1,7 +1,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include "gpio.h"
-#include "usart.h"
+#include <avrl/gpio.h>
+#include <avrl/usart.h>
 
 int main(void)
 {

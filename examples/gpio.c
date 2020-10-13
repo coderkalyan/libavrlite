@@ -2,8 +2,8 @@
  * This example uses libavrlite's gpio functions
  * to flash the built-in LED on the Arduino board (port B, pin 7).
  */
-#include "avrl/gpio.h"
-#include "util/delay.h"
+#include <avrl/gpio.h>
+#include <util/delay.h>
 
 // Define port and pin constants
 const int GPIO_PORT = GPIOB;

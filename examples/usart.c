@@ -1,5 +1,5 @@
-#include "gpio.h"
-#include "usart.h"
+#include <avrl/gpio.h>
+#include <avrl/usart.h>
 
 int main(void)
 {
