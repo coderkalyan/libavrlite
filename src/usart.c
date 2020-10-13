@@ -81,6 +81,26 @@ void usart_disable_rx_interrupt(uint8_t usart)
     USART_RIR(usart) &= ~(1 << USART_RX_INTERRUPT);
 }
 
+void usart_enable_tx_complete_interrupt(uint8_t usart)
+{
+    USART_TIR(usart) |= (1 << USART_TX_INTERRUPT);
+}
+
+void usart_disable_tx_complete_interrupt(uint8_t usart)
+{
+    USART_TIR(usart) &= ~(1 << USART_TX_INTERRUPT);
+}
+
+void usart_enable_tx_ready_interrupt(uint8_t usart)
+{
+    USART_EIR(usart) |= (1 << USART_EMPTY_INTERRUPT);
+}
+
+void usart_disable_tx_ready_interrupt(uint8_t usart)
+{
+    USART_EIR(usart) &= ~(1 << USART_EMPTY_INTERRUPT);
+}
+
 void usart_puts(uint8_t usart, char *string)
 {
     while (*string) {

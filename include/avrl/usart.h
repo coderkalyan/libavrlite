@@ -48,6 +48,14 @@
 
 #define USART_RIR(usart) _SFR_MEM8(usart + 0x01) // receive interrupt register
 #define USART_RX_INTERRUPT 7
+#define USART_TIR(usart) _SFR_MEM8(usart + 0x01) // transmit interrupt register
+#define USART_TX_INTERRUPT 6
+#define USART_EIR(usart) _SFR_MEM8(usart + 0x01) // data register empty interrupt register
+#define USART_EMPTY_INTERRUPT 5
+
+#define ISR_USART_RX USART_RX_vect
+#define ISR_USART_TX_COMPLETE USART_TX_vect
+#define ISR_USART_TX_READY USART_UDRE_vect
 
 void usart_set_parity(uint8_t usart, uint8_t parity);
 void usart_set_databits(uint8_t usart, uint8_t bits);
@@ -63,5 +71,9 @@ void usart_wait_recv_ready(uint8_t usart);
 char usart_read_blocking(uint8_t usart);
 void usart_enable_rx_interrupt(uint8_t usart);
 void usart_disable_rx_interrupt(uint8_t usart);
+void usart_enable_tx_complete_interrupt(uint8_t usart);
+void usart_disable_tx_complete_interrupt(uint8_t usart);
+void usart_enable_tx_empty_interrupt(uint8_t usart);
+void usart_disable_tx_empty_interrupt(uint8_t usart);
 void usart_puts(uint8_t usart, char *string);
 void usart_putln(uint8_t usart, char *string);

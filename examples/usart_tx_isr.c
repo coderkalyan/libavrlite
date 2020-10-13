@@ -15,9 +15,10 @@ int main(void)
 
     usart_set_direction(USART0, USART_DIRECTION_RX | USART_DIRECTION_TX);
 
-    usart_enable_rx_interrupt(USART0);
+    usart_enable_tx_ready_interrupt(USART0);
 
-    uint8_t data;
+    sei();
+
     while (1)
     {
         gpio_toggle(GPIOB, GPIO5);
@@ -27,8 +28,7 @@ int main(void)
     return 0;
 }
 
-ISR(USART_RX_vect)
+ISR(ISR_USART_TX_READY)
 {
-    uint8_t data = usart_read(USART0);
-    usart_send(USART0, data);
+    usart_send(USART0, 'A');
 }
