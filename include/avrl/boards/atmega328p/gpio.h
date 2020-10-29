@@ -23,6 +23,7 @@
 #define PCINT_GPIOC PCIE1
 #define PCINT_GPIOB PCIE0
 
+#define FEAT_EXINT
 #define ISR_EXINT0 INT0_vect
 #define ISR_EXINT1 INT1_vect
 #define ISR_PCINT_GPIOD PCINT2_vect
