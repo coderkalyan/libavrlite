@@ -3,7 +3,13 @@
 libavrlite is a thin AVR abstraction library which aims to provide abstractions
 for AVR functions while maintaining minimal overhead and keeping the programmer
 in control. It provides functions for common embedded programming tasks,
-such as reading and writing serial/USART.
+such as reading and writing serial/USART. It is inspired by libopencm3, and has a
+similar (but not compatible) API.
+
+_Warning: libavrlite is currently in very early development. It does not support
+all peripherals on AVR processors, and it is currently only tested on an Arduino Uno.
+If you are interested in contributing additional board support, please let me know or
+file a PR._
 
 ## Install
 libavrlite is just a platformio library. To install the latest version
