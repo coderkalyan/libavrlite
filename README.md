@@ -12,9 +12,7 @@ If you are interested in contributing additional board support, please let me kn
 file a PR._
 
 ## Install
-libavrlite is just a platformio library. To install the latest version
-in your platformio project, simply use the package manager:
-`pio lib install libavrlite`
+TODO
 
 ## Features
 libavrlite has many abstractions and utilities embedded programmers will find useful:
